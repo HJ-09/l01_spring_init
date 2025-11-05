@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Spring 시작</title>
+    <link rel="stylesheet" href="/home.css"> <!--스프링은 톰캣이 하나여서 루트경로만..?-->
 </head>
 <body>
-$END$
+    <h1>스프링 start!⭐</h1>
+    <hr>
+    <h2>속성에 th:가 있으면 서버에서 렌더링 후 반환</h2>
+    <p th:text="'하이'"></p> <!--문자열은 작은따옴표 필요-->
+    <p th:text="${13*13}"></p> <!--변수 참조 할 때-->
+<!--    <p th:text="3*9"></p>-->
+<!--    <p th:text="${13*13"></p> &lt;!&ndash;오류 만들어볼게&ndash;&gt; &lt;!&ndash;Error Page 띄우넴&ndash;&gt;-->
+    <hr>
+    <h2>html이 렌더링 될 때 전달되는 객체 model.addAttribute("msg","")</h2>
+    <p th:text="${msg}"> ${} → 타임리프에서 변수 참조할 때 사용</p>
+    <p><%=request.hetAttribute("msg")%></p>
+
+    <hr>
+    <h2>컨트롤러에서 파라미터 처리하기</h2>
+    <p><a href="/reqTest.do?id=smu123">id가 smu123인 파라미터 처리</a></p>
+    <p><a href="/parseTest.do?a=33&b=17.9">?a=33&b=17.9인 파라미터 파싱처리</a></p>
+    <p><a href="/parseTest.do?a=십&b=17.9">?a=십&b=17.9인 파라미터 파싱처리(BAD REQUEST 400)</a></p>
+    <p><a href="/parseTest.do?a=33&b=17.9&c=100">?a=33&b=17.9&c=100인 파라미터 파싱처리</a></p>
+
+    <hr>
+    <h2>컨트롤러에서 파라미터 처리하기2(옵션)</h2>
+    <p><a href="/req/required.do">파라미터(name) 강제해볼게 ~ ~ [근데 name 업슴]</a></p>
+    <p><a href="/req/required.do?name=경민">name 있는 파라미터(name) 강제~0~</a></p>
+
+    <h2>패스(=url)의 변수(PathVariable)</h2>
+    <p>⤷ 파라미터가 강제되는 것을 명시적으로 표현할 수 있다!</p>
+    <p><a href="/req//book"> (/req//book)경로에 변수가 있다는건 파라미터를 강제한다는 것</a></p> <!--404 오류 발생!-->
+    <p><a href="/req/7777/book"> (/req/7777/book) 경로에 변수가 있다는건 파라미터를 강제한다는 것</a></p>
+
+    <hr>
+    <h2>양식 데이터를 ModelAttribute로 처리</h2>
+    <form action="/req/modelTest.do" method="post">
+        <p><label>· 부서번호: <input type="text" name="deptno" value="60"></label></p>
+        <p><label>· 부서이름: <input type="text" name="dname" value="웹개발"></label></p>
+        <p><label>· 부서위치: <input type="text" name="loc" value="SEOUL"></label></p>
+
+        <p>
+            <button>제 출</button>
+        </p>
+    </form>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

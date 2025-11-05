@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class L01SpringInitApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(L01SpringInitApplication.class, args);
-	}
+    public static void main(String[] args) { //구동되는 앱은 main이 있음. main을 실행~ main은 내장톰캣을 실행함!
+        SpringApplication.run(L01SpringInitApplication.class, args);
+    }
 
 }
