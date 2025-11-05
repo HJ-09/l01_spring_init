@@ -9,24 +9,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 //스프링은 상속을 아주 아주 아주 싫어합니다 ! ! !
 //코드가 복잡하고, 관계가 복잡하다고 생각해서 그럼 ㅇㅇ
-//그래서 대부분이 자동 상속을 한다고?! 어노테이션 상속으로 대체함.
+//그래서 대부분이 자동 구현을 함. 어노테이션 상속으로 대체함.
 /// 어노테이션 상속이란?
 /// java→class 컴파일시에 동작함. (1.오류, 2.자동완성)
 
-@Controller //이 친구가 자동으로 servlet을.. 뭐라구? //동적리소스 타입
-//└─ html(view)를 자동으로 렌더링 후 응답함.
+//┌─ 컨트롤러는 메소드 단위로 동적리소스를 만들어주고 잇슴
+@Controller //동적리소스 타입으로 바꿔주고 있음
+//└─ html(view)를 렌더링 후 응답함. //생략하면 동작하지 x
 //@RestController //json, text, img,.. 응답하는 타입을 다양하게 할 수 있음.
+//└─ 뷰를 렌더링 하지 x
 public class HomeController {
 
     //함수마다 주소 만들 수 잇슴
-    //┌─ Get으로 들어온 요청을 주소로 쓰겟다!
+    //┌─ Get으로 들어온 요청을 이 함수로 쓰겟다!
     @GetMapping("/") // "/" ⇒ 요청이 오면 해당 함수를 실행하겠다!
-    public String index(Model model) { //동적리소스
+    public String index(Model model) { //이 함수는 동적리소스임.
         model.addAttribute("msg","스프링아 안녕"); //타임리프가 index.html을 렌더링 할 때 사용하는 객체
         //└─ == req.setAttribute("msg","");
 
         return "index"; //== req.getRequestDispatcher("/WEB-INF/views/index.html").forward(req.resp)
-        //└─ 해당하는 타임리프 .. 모라고???
+        //└─ 해당하는 타임리프 문서를 렌더링 하겠다! html처럼 보이지만 사실은 타임리프임.
     }
 
 
