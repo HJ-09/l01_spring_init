@@ -24,8 +24,8 @@ public class RequestController {
     public String bookDetail(
             //여태 파라미터에 보낼 때 물음표에 보냈는데 이제는 path에 보냄 ㅋ
             //┌─ PathVariable은 삭제불가라고..?
-            @PathVariable(name = "no") int bookNo
-            //required=true인 것만 적어주면 댐.
+            @PathVariable(name = "no", required = true) int bookNo
+            //required=true인 것만 적어주면 댐.(required=true는 생략해도 되지만 써주느게 좋음~)
     ){
         System.out.println(bookNo);
         return "required"; //페이지 required로 돌아갈게~,~
@@ -34,7 +34,7 @@ public class RequestController {
     @PostMapping("/modelTest.do")
     public String modelTest(
 //            int deptno, String dname, String loc
-            DeptDto deptDto //⇒ @ModelAttribute임. 생략해도 댐.
+            DeptDto deptDto //⇒ @ModelAttribute임. 생략해도 댐. set함수인가본뎀~?
     ){
 //        System.out.println(deptno+":"+dname+":"+loc);
         System.out.println(deptDto);

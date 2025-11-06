@@ -1,9 +1,9 @@
 package com.smu.l01_spring_init;
 
 public class DeptDto {
-    int deptno;
-    String dname;
-    String loc;
+    private int deptno;
+    private String dname;
+    private String loc;
 
     @Override
     public String toString() {
